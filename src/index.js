@@ -1,13 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import rootContextStore from "./infrastructure/stores/rootContextStore";
+import { RootStoreContext } from "./infrastructure/hooks/useRootStoreContext";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <RootStoreContext.Provider value={rootContextStore}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </RootStoreContext.Provider>
   </React.StrictMode>
 );
 

@@ -1,5 +1,8 @@
+import React from "react";
+import BasicRouting from "./infrastructure/routing/BasicRouting";
+
 function App() {
-  return <div>Start</div>;
+  return <BasicRouting />;
 }
 
 export default App;
