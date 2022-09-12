@@ -1,5 +1,7 @@
 import CurrentUserStore from "./currentUserStore";
 
-export default {
+const rootStore = {
   currentUserStore: new CurrentUserStore(),
 };
+
+export default rootStore;
