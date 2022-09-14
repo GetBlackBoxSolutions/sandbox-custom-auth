@@ -1,4 +1,6 @@
 class CurrentUserStore {
+  isLoggedIn = false;
+
   constructor() {
     this.displayName = "";
     this.userName = "";
