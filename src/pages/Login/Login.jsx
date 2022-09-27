@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.scss";
 import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
 import dataService from "../../infrastructure/services/data-service";
 
@@ -43,22 +44,33 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h4>Login</h4>
-      <div>
-        <input type="text" value={userName} onChange={onUserNameValueChanged} />
+    <div className="full-page">
+      <div id="login">
+        <h2>Login</h2>
+        <hr />
+        <div>
+          <input
+            type="text"
+            placeholder="User Name"
+            value={userName}
+            onChange={onUserNameValueChanged}
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={onPasswordValueChanged}
+          />
+        </div>
+        <div>
+          <button type="button" onClick={onLoginClicked}>
+            Login
+          </button>
+        </div>
+        <div>{errorMessage}</div>
       </div>
-      <div>
-        <input
-          type="password"
-          value={password}
-          onChange={onPasswordValueChanged}
-        />
-      </div>
-      <div>
-        <button onClick={onLoginClicked}>Login</button>
-      </div>
-      <div>{errorMessage}</div>
     </div>
   );
 }
