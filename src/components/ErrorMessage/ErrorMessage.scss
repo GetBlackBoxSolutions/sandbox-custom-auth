@@ -1,6 +1,7 @@
-.error-message{
-    background-color: white;    
-    color: red;
+@use "../../assets/styles/abstract" as *;
+
+.error-message{   
+    color: $red;
     
     border: none;
     border-radius: 5px;

@@ -1,12 +1,14 @@
+@use "../abstract/" as *;
+
 .btn{
     padding: 10px 5px;
-    background-color: hsl(0, 0%, 75%);
-    border-radius: 4px;
+    background-color: $red-700;
+    border-radius: 6px;
     border: 1px solid transparent;
-    color: white;
+    color: $white;
     
     &:hover{
-        background-color: hsl(0, 0%, 80%);
+        background-color: $red-800;
         cursor: pointer;
     }
 }
