@@ -1,8 +1,8 @@
-input[type="text"],
-input[type="password"]
+.bbd-text-input
 {
     border: 1px solid transparent;
     border-radius: 5px;
+    outline: 0;
 
     margin: 10px 0px;
     padding: 8.5px;

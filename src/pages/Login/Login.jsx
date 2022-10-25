@@ -4,6 +4,8 @@ import "./Login.scss";
 import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
 import dataService from "../../infrastructure/services/data-service";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import InputText from "../../components/Input/InputText";
+import Button from "../../components/Button/Button";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -47,27 +49,20 @@ export default function Login() {
   return (
     <div className="full-page">
       <div id="login" className="container">
-        <h1>Login</h1>
+        <h3>Grade Book</h3>
         <hr />
-        <input
-          type="text"
+        <InputText
           placeholder="User Name"
           value={userName}
           onChange={onUserNameValueChanged}
         />
-        <input
+        <InputText
           type="password"
           placeholder="Password"
           value={password}
           onChange={onPasswordValueChanged}
         />
-        <button
-          type="button"
-          onClick={onLoginClicked}
-          className="btn btn-default"
-        >
-          Login
-        </button>
+        <Button text="Login" onClick={onLoginClicked} />
         {errorMessage && <ErrorMessage message={errorMessage} />}
       </div>
     </div>
