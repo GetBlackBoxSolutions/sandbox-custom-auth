@@ -1,15 +1,14 @@
-@use "./functions" as * ;
+@use "./functions" as *;
 
 $white: hsla(0, 100%, 100%, 1);
-$red: #EE0D0D;
-
+$red: #ee0d0d;
 
 $red-100: tint-color($red, 80%);
 $red-200: tint-color($red, 60%);
 $red-300: tint-color($red, 40%);
 $red-400: tint-color($red, 20%);
 $red-500: $red;
-$red-600: shade-color($red, 20%) ;
-$red-700: shade-color($red, 40%) ;
-$red-800: shade-color($red, 60%) ;
-$red-900: shade-color($red, 80%) ;
+$red-600: shade-color($red, 20%);
+$red-700: shade-color($red, 40%);
+$red-800: shade-color($red, 60%);
+$red-900: shade-color($red, 80%);
