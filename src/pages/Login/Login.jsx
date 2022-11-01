@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <div className="full-page">
       <div id="login" className="container">
-        <h3>Grade Book</h3>
+        <h3>Sandbox</h3>
         <hr />
         <InputText
           placeholder="User Name"
