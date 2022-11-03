@@ -9,6 +9,7 @@ export default function BasicRouting() {
   return (
     <Routes>
       <Route element={<ProtectedRouting />}>
+        <Route element={<Dashboard />} path="/dashboard" exact />
         <Route element={<Dashboard />} path="/" exact />
       </Route>
       <Route path="/login" element={<Login />} />
