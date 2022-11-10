@@ -1,14 +1,49 @@
 @use "../../assets/styles/abstract/" as *;
 
-.btn{
-    padding: 10px 5px;
-    background-color: $red-700;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    color: $white;
-    
-    &:hover{
-        background-color: $red-800;
-        cursor: pointer;
+.btn {
+  padding: 10px 5px;
+
+  border-radius: 6px;
+  border: 1px solid transparent;
+
+  line-height: 2.1rem;
+
+  color: $white;
+
+  &--default {
+    background-color: $primary;
+
+    &:hover {
+      background-color: $primary-hover;
+      cursor: pointer;
     }
+  }
+
+  &--danger {
+    background-color: $red-500;
+
+    &:hover {
+      background-color: $red-600;
+      cursor: pointer;
+    }
+  }
+
+  &--warning {
+    background-color: $yellow-500;
+    color: $black;
+
+    &:hover {
+      background-color: $yellow-400;
+      cursor: pointer;
+    }
+  }
+
+  &--success {
+    background-color: $green-500;
+
+    &:hover {
+      background-color: $green-600;
+      cursor: pointer;
+    }
+  }
 }
