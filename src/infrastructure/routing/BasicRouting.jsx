@@ -8,12 +8,12 @@ import dataService from "../services/data-service";
 import { useRootStore } from "../hooks/useRootStoreContext";
 
 export default function BasicRouting() {
-  const { currentUserStore } = useRootStore();
+  const { currentUserStore, tokenStore } = useRootStore();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      const token = currentUserStore.getAccessToken();
+      const token = tokenStore.getAccessToken();
 
       if (token) {
         try {
@@ -24,19 +24,22 @@ export default function BasicRouting() {
           if (currentUserData) {
             currentUserStore.setCurrentUser(
               currentUserData.displayName,
-              currentUserData.userName,
-              currentUserData.token
+              currentUserData.userName
             );
+
+            tokenStore.setLogin(true);
           }
         } catch (error) {
           if (token && error.response && error.response.status === 401) {
-            currentUserStore.setCurrentUser(null, null, null);
+            currentUserStore.setCurrentUser(null, null);
+            tokenStore.setAccessToken(null);
           }
         }
       }
+
       setIsLoading(false);
     })();
-  }, [currentUserStore]);
+  }, [currentUserStore, tokenStore]);
 
   if (isLoading) return <h1>loading...</h1>;
 
@@ -48,7 +51,7 @@ export default function BasicRouting() {
       </Route>
       <Route
         path="/login"
-        element={currentUserStore.isLoggedIn ? <Navigate to="/" /> : <Login />}
+        element={tokenStore.isLoggedIn ? <Navigate to="/" /> : <Login />}
       />
       <Route path="*" element={<NotFound />} />
     </Routes>

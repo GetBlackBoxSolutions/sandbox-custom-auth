@@ -12,7 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErroMessage] = useState("");
 
-  const { currentUserStore } = useRootStore();
+  const { currentUserStore, tokenStore } = useRootStore();
   const navigate = useNavigate();
 
   const onUserNameValueChanged = ({ target }) => {
@@ -31,11 +31,14 @@ export default function Login() {
     }
     try {
       const { data } = await dataService.login({ email: userName, password });
+
       currentUserStore.setCurrentUser(
-        data.displayName,
-        data.userName,
-        data.token
+        data.userProfile.displayName,
+        data.userProfile.userName
       );
+
+      tokenStore.setAccessToken(data.token);
+
       navigate("/dashboard");
     } catch (error) {
       console.log(error);

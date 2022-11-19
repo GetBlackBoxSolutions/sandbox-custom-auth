@@ -1,0 +1,13 @@
+header {
+  border: 1px solid red;
+  height: 10rem;
+}
+
+main {
+  border: 1px solid blue;
+
+  margin: auto;
+
+  height: calc(100vh - 10rem);
+  max-width: 1000px;
+}
