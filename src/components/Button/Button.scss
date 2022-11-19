@@ -10,6 +10,7 @@
   text-decoration: none;
 
   color: $white;
+  user-select: none;
 
   &--default {
     background-color: $primary;
