@@ -1,21 +1,26 @@
+@use "../../assets/styles/abstract/" as *;
+
 #login {
   background-color: hsla(0, 0%, 25%, 0.75);
+  box-shadow: 10px 10px 10px $black;
   border-radius: 6px;
-  border: 4px solid hsl(0, 0%, 30%, 0.75);
-  
-  display: grid;  
-  grid-template-rows: 85px 15px .25fr .25fr 1fr auto;
+  border: 0px;
+
+  display: grid;
+  grid-template-rows: 85px 15px 0.25fr 0.25fr 1fr auto;
   justify-items: center;
   align-items: center;
 
-  color: white;
+  color: $white;
   margin: 50px auto;
- 
+
   height: 400px;
   width: 400px;
 
-  hr{width: 100%;}
-  button{
+  hr {
+    width: 100%;
+  }
+  button {
     width: 100%;
   }
 }

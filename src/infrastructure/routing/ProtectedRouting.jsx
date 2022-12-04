@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../../components/Header/Header";
 import { Navigate, Outlet } from "react-router-dom";
 import { useRootStore } from "../hooks/useRootStoreContext";
 
@@ -7,9 +8,7 @@ export default function ProtectedRouting() {
 
   return tokenStore.isLoggedIn ? (
     <>
-      <header>
-        <nav>Navigaton</nav>
-      </header>
+      <Header />
       <main>
         <Outlet />
       </main>
