@@ -50,24 +50,32 @@ export default function Login() {
   };
 
   return (
-    <div className="full-page">
-      <div id="login" className="container">
-        <h3>Sandbox</h3>
-        <hr />
-        <InputText
-          placeholder="User Name"
-          value={userName}
-          onChange={onUserNameValueChanged}
+    <>
+      <video playsinline autoPlay muted loop id="myVideo">
+        <source
+          src="https://static.vecteezy.com/system/resources/previews/003/547/733/mp4/winter-snow-man-christmas-new-year-and-winter-holidays-themed-background-animations-free-video.mp4"
+          type="video/mp4"
         />
-        <InputText
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onPasswordValueChanged}
-        />
-        <Button text="Login" onClick={onLoginClicked} />
-        {errorMessage && <ErrorMessage message={errorMessage} />}
+      </video>
+      <div className="full-page">
+        <div id="login" className="container">
+          <h3>Sandbox</h3>
+          <hr />
+          <InputText
+            placeholder="User Name"
+            value={userName}
+            onChange={onUserNameValueChanged}
+          />
+          <InputText
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={onPasswordValueChanged}
+          />
+          <Button text="Login" onClick={onLoginClicked} />
+          {errorMessage && <ErrorMessage message={errorMessage} />}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
