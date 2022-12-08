@@ -7,12 +7,12 @@ export default function ProtectedRouting() {
   const { tokenStore } = useRootStore();
 
   return tokenStore.isLoggedIn ? (
-    <>
+    <div id="main-page">
       <Header />
       <main>
         <Outlet />
       </main>
-    </>
+    </div>
   ) : (
     <Navigate to="/login" />
   );
