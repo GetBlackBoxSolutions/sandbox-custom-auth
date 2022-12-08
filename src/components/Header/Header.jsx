@@ -1,7 +1,18 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
 import "./Header.scss";
 
 export default function Header() {
+  const navigate = useNavigate();
+  const { currentUserStore, tokenStore } = useRootStore();
+
+  const onLogOutClicked = () => {
+    currentUserStore.setCurrentUser(null);
+    tokenStore.setAccessToken(null);
+    navigate("/login");
+  };
+
   return (
     <header>
       <nav>
@@ -10,15 +21,17 @@ export default function Header() {
         </div>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="dashboard">Home</Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <Link to="about">About</Link>
           </li>
           <li>
-            <a href="#">Profile</a>
+            <Link to="profile">Profile</Link>
           </li>
-          <li>Logout</li>
+          <li>
+            <button onClick={onLogOutClicked}>Logout</button>
+          </li>
         </ul>
       </nav>
     </header>

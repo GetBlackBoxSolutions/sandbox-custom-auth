@@ -6,6 +6,8 @@ import ProtectedRouting from "../../infrastructure/routing/ProtectedRouting";
 import NotFound from "../../pages/NotFound/NotFound";
 import dataService from "../services/data-service";
 import { useRootStore } from "../hooks/useRootStoreContext";
+import About from "../../pages/About/About";
+import Profile from "../../pages/Profile/Profile";
 
 export default function BasicRouting() {
   const { currentUserStore, tokenStore } = useRootStore();
@@ -46,8 +48,10 @@ export default function BasicRouting() {
   return (
     <Routes>
       <Route element={<ProtectedRouting />}>
-        <Route element={<Dashboard />} path="/dashboard" exact />
-        <Route element={<Dashboard />} path="/" exact />
+        <Route element={<Dashboard />} path="/dashboard" />
+        <Route element={<About />} path="/about" />
+        <Route element={<Profile />} path="/profile" />
+        <Route element={<Dashboard />} path="/" />
       </Route>
       <Route
         path="/login"
