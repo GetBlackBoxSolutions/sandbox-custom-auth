@@ -8,6 +8,7 @@ import dataService from "../services/data-service";
 import { useRootStore } from "../hooks/useRootStoreContext";
 import About from "../../pages/About/About";
 import Profile from "../../pages/Profile/Profile";
+import Spinner from "../../components/Spinner/Spinner";
 
 export default function BasicRouting() {
   const { currentUserStore, tokenStore } = useRootStore();
@@ -43,7 +44,7 @@ export default function BasicRouting() {
     })();
   }, [currentUserStore, tokenStore]);
 
-  if (isLoading) return <h1>loading...</h1>;
+  if (isLoading) return <Spinner />;
 
   return (
     <Routes>
