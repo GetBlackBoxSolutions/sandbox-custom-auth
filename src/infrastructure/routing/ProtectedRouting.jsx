@@ -1,19 +1,18 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 import { Navigate, Outlet } from "react-router-dom";
-import { useRootStore } from "../hooks/useRootStoreContext";
+import { useAuth } from "../hooks/useAuthContext";
 
 export default function ProtectedRouting() {
-  const { tokenStore } = useRootStore();
+  const { currentUser } = useAuth();
+  if (!currentUser) return <Navigate to="/login" replace />;
 
-  return tokenStore.isLoggedIn ? (
+  return (
     <div id="main-page">
       <Header />
       <main>
         <Outlet />
       </main>
     </div>
-  ) : (
-    <Navigate to="/login" />
   );
 }

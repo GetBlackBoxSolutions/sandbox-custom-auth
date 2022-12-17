@@ -1,12 +1,8 @@
 class CurrentUserStore {
-  constructor() {
-    this.displayName = "";
-    this.userName = "";
-  }
-
-  setCurrentUser(displayName, userName) {
+  constructor(displayName, userName, email) {
     this.displayName = displayName;
     this.userName = userName;
+    this.email = email;
   }
 }
 

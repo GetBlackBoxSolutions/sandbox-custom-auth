@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.scss";
-import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
+import { useAuth } from "../../infrastructure/hooks/useAuthContext";
 import dataService from "../../infrastructure/services/data-service";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import InputText from "../../components/Input/InputText";
@@ -12,7 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErroMessage] = useState("");
 
-  const { currentUserStore, tokenStore } = useRootStore();
+  const store = useAuth();
   const navigate = useNavigate();
 
   const onUserNameOrEmailValueChanged = ({ target }) => {
@@ -35,12 +35,8 @@ export default function Login() {
         password,
       });
 
-      currentUserStore.setCurrentUser(
-        data.userProfile.displayName,
-        data.userProfile.userName
-      );
-
-      tokenStore.setAccessToken(data.token);
+      store.setCurrentUser(data.userProfile);
+      store.tokenStore.setAccessToken(data.token);
 
       navigate("/dashboard");
     } catch (error) {

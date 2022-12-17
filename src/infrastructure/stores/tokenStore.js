@@ -1,25 +1,21 @@
 class TokenStore {
-  constructor() {
-    this.isLoggedIn = false;
-  }
+  _token = null;
 
   setAccessToken(token) {
     if (token) {
       window.localStorage.setItem("jwt", token);
-      this.isLoggedIn = true;
+      this._token = token;
       return;
     }
 
-    this.isLoggedIn = false;
+    this._token = null;
     window.localStorage.removeItem("jwt");
   }
 
   getAccessToken() {
-    return window.localStorage.getItem("jwt");
-  }
-
-  setLogin(isLoggedIn) {
-    this.isLoggedIn = isLoggedIn;
+    if (this._token) return this._token;
+    this._token = window.localStorage.getItem("jwt");
+    return this._token;
   }
 }
 

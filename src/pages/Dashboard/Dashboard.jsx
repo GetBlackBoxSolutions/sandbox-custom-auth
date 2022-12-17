@@ -1,13 +1,13 @@
 import React from "react";
-import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
+import { useAuth } from "../../infrastructure/hooks/useAuthContext";
 
 export default function Dashboard() {
-  const { currentUserStore } = useRootStore();
+  const { currentUser } = useAuth();
 
   return (
     <div>
       <h2>Dashboard</h2>
-      <h4>Welcome {currentUserStore.displayName}</h4>
+      <h4>Welcome {currentUser.displayName}</h4>
     </div>
   );
 }

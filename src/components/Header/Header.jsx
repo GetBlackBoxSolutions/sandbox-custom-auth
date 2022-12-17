@@ -1,14 +1,14 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
+import { useAuth } from "../../infrastructure/hooks/useAuthContext";
 import "./Header.scss";
 
 export default function Header() {
   const navigate = useNavigate();
-  const { currentUserStore, tokenStore } = useRootStore();
+  const { setCurrentUser, tokenStore } = useAuth();
 
   const onLogOutClicked = () => {
-    currentUserStore.setCurrentUser(null);
+    setCurrentUser(null);
     tokenStore.setAccessToken(null);
     navigate("/login");
   };
