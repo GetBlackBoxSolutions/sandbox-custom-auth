@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./Login.scss";
 import { useRootStore } from "../../infrastructure/hooks/useRootStoreContext";
 import dataService from "../../infrastructure/services/data-service";
@@ -8,11 +8,11 @@ import InputText from "../../components/Input/InputText";
 import Button from "../../components/Button/Button";
 
 export default function Login() {
+  const { currentUserStore, tokenStore } = useRootStore();
   const [userNameOrEmail, setUserNameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErroMessage] = useState("");
 
-  const { currentUserStore, tokenStore } = useRootStore();
   const navigate = useNavigate();
 
   const onUserNameOrEmailValueChanged = ({ target }) => {
@@ -35,11 +35,9 @@ export default function Login() {
         password,
       });
 
-      currentUserStore.setCurrentUser(
-        data.userProfile.displayName,
-        data.userProfile.userName
-      );
+      console.log(data);
 
+      currentUserStore.setCurrentUser(data.userProfile);
       tokenStore.setAccessToken(data.token);
 
       navigate("/dashboard");
@@ -52,25 +50,25 @@ export default function Login() {
     }
   };
 
+  if (currentUserStore.userName) return <Navigate to="/" replace />;
+
   return (
-    <div className="full-page">
-      <div id="login" className="container">
-        <h3>Sandbox</h3>
-        <hr />
-        <InputText
-          placeholder="Username or email address"
-          value={userNameOrEmail}
-          onChange={onUserNameOrEmailValueChanged}
-        />
-        <InputText
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onPasswordValueChanged}
-        />
-        <Button text="Sign in" onClick={onLoginClicked} />
-        {errorMessage && <ErrorMessage message={errorMessage} />}
-      </div>
+    <div id="login" className="container">
+      <h3>Sandbox</h3>
+      <hr />
+      <InputText
+        placeholder="Username or email address"
+        value={userNameOrEmail}
+        onChange={onUserNameOrEmailValueChanged}
+      />
+      <InputText
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={onPasswordValueChanged}
+      />
+      <Button text="Sign in" onClick={onLoginClicked} />
+      {errorMessage && <ErrorMessage message={errorMessage} />}
     </div>
   );
 }

@@ -1,29 +1,14 @@
 import React from "react";
-import { Navigate, Routes, Route } from "react-router-dom";
-import Login from "../../pages/Login/Login";
-import Dashboard from "../../pages/Dashboard/Dashboard";
-import ProtectedRouting from "../../infrastructure/routing/ProtectedRouting";
-import NotFound from "../../pages/NotFound/NotFound";
+import { Navigate, Outlet } from "react-router-dom";
 import { useRootStore } from "../hooks/useRootStoreContext";
-import About from "../../pages/About/About";
-import Profile from "../../pages/Profile/Profile";
 
-export default function BasicRouting() {
-  const { currentUser } = useRootStore();
+export default function ProtectedRouting() {
+  const { currentUserStore } = useRootStore();
+  if (currentUserStore.userName) return <Navigate to="/" replace />;
 
   return (
-    <Routes>
-      <Route element={<ProtectedRouting />}>
-        <Route element={<Dashboard />} path="/dashboard" />
-        <Route element={<About />} path="/about" />
-        <Route element={<Profile />} path="/profile" />
-        <Route element={<Dashboard />} path="/" />
-      </Route>
-      <Route
-        path="/login"
-        element={currentUser ? <Navigate to="/" /> : <Login />}
-      />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <div className="full-page">
+      <Outlet />
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BasicRouting from "./infrastructure/routing/BasicRouting";
+import BasicRouting from "./infrastructure/routing/BaseRouting";
 import { useRootStore } from "./infrastructure/hooks/useRootStoreContext";
 import dataService from "./infrastructure/services/data-service";
 import Spinner from "./components/Spinner/Spinner";
@@ -10,6 +10,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      console.log("Run App useEffect");
       const token = tokenStore.getAccessToken();
 
       if (token) {
@@ -19,16 +20,11 @@ function App() {
           );
 
           if (currentUserData) {
-            currentUserStore.setCurrentUser(
-              currentUserData.displayName,
-              currentUserData.userName
-            );
-
-            tokenStore.setLogin(true);
+            currentUserStore.setCurrentUser(currentUserData);
           }
         } catch (error) {
           if (token && error.response && error.response.status === 401) {
-            currentUserStore.setCurrentUser(null, null);
+            currentUserStore.setCurrentUser(null);
             tokenStore.setAccessToken(null);
           }
         }

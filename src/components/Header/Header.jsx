@@ -10,8 +10,10 @@ export default function Header() {
   const onLogOutClicked = () => {
     currentUserStore.setCurrentUser(null);
     tokenStore.setAccessToken(null);
-    navigate("/login");
+    navigate("/login", { replace: true });
   };
+
+  console.log("Header");
 
   return (
     <header>
