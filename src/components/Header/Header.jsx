@@ -32,7 +32,9 @@ export default function Header() {
             <Link to="profile">Profile</Link>
           </li>
           <li>
-            <button onClick={onLogOutClicked}>Logout</button>
+            <button type="button" onClick={onLogOutClicked}>
+              Logout
+            </button>
           </li>
         </ul>
       </nav>
