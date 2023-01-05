@@ -13,30 +13,36 @@ export default function Header() {
     navigate("/login", { replace: true });
   };
 
-  console.log("Header");
-
   return (
     <header>
       <nav>
         <div>
           <h3>Logo</h3>
         </div>
-        <ul>
-          <li>
-            <Link to="dashboard">Home</Link>
-          </li>
-          <li>
-            <Link to="about">About</Link>
-          </li>
-          <li>
-            <Link to="profile">Profile</Link>
-          </li>
-          <li>
-            <button type="button" onClick={onLogOutClicked}>
-              Logout
-            </button>
-          </li>
-        </ul>
+
+        <input type="checkbox" class="menu-btn" id="menu-btn" />
+        <label for="menu-btn" class="menu-icon">
+          <span class="menu-icon__line"></span>
+        </label>
+
+        <div className="nav-links">
+          <ul>
+            <li>
+              <Link to="dashboard">Home</Link>
+            </li>
+            <li>
+              <Link to="about">About</Link>
+            </li>
+            <li>
+              <Link to="profile">Profile</Link>
+            </li>
+            <li>
+              <button type="button" onClick={onLogOutClicked}>
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );
